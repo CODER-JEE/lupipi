@@ -13,7 +13,7 @@
       theme: {
         extend: {
           colors: {
-            bgGray: '#f0f0f0', // 240,240,240
+            bgGray: '#f0f0f0',
             cardGray: '#ffffff',
             textDark: '#333333',
             accent: '#4f46e5'
@@ -33,8 +33,8 @@
       }
       .icon-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr); /* 改为一行3个item */
-        gap: 1.5rem; /* 统一上下左右间距 */
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem; /* 统一间距 */
       }
       .icon-card {
         @apply flex flex-col items-center justify-center p-4 rounded-xl bg-cardGray shadow-sm transition-all duration-300 hover:shadow-md hover:scale-105 cursor-pointer;
@@ -46,9 +46,10 @@
   </style>
 </head>
 
-<body class="bg-bgGray min-h-screen p-4 font-sans overflow-x-hidden"> <!-- 禁止横向滚动 -->
+<!-- 关键修改：移除min-h-screen，避免强制页面高度超过屏幕；设置margin:0清除默认边距 -->
+<body class="bg-bgGray p-4 font-sans overflow-x-hidden m-0">
   <!-- 网址图标网格 -->
-  <main class="icon-grid max-w-full"> <!-- 确保内容不超出屏幕宽度 -->
+  <main class="icon-grid max-w-full">
     <!-- 示例网址1 - 百度 -->
     <a href="https://www.baidu.com" target="_blank" class="icon-card">
       <div class="w-12 h-12 rounded-full bg-[#4285f4] flex items-center justify-center text-white">
