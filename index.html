@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>网址导航</title>
+  <title>HOME PAGE</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
   
-  <!-- 配置Tailwind自定义颜色 -->
+  <!-- 配置Tailwind自定义颜色和字体 -->
   <script>
     tailwind.config = {
       theme: {
@@ -16,7 +16,11 @@
             bgGray: '#f0f0f0', // 240,240,240
             cardGray: '#ffffff',
             textDark: '#333333',
-          }
+            accent: '#4f46e5'
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
         },
       }
     }
@@ -27,27 +31,13 @@
       .content-auto {
         content-visibility: auto;
       }
-      .scroll-container {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch; /* 平滑滚动 */
-        padding-bottom: 1rem; /* 预留滚动条空间 */
-      }
-      .scroll-container::-webkit-scrollbar {
-        height: 4px; /* 滚动条高度 */
-      }
-      .scroll-container::-webkit-scrollbar-thumb {
-        background-color: rgba(0,0,0,0.2);
-        border-radius: 2px;
-      }
       .icon-grid {
         display: grid;
-        grid-template-columns: repeat(4, 110px); /* 固定宽度确保一行4个 */
-        gap: 1rem;
-        min-width: max-content; /* 确保内容不折行 */
-        padding: 0 0.5rem;
+        grid-template-columns: repeat(3, 1fr); /* 改为一行3个item */
+        gap: 1.5rem; /* 统一上下左右间距 */
       }
       .icon-card {
-        @apply flex flex-col items-center justify-center p-3 rounded-xl bg-cardGray shadow-sm transition-all duration-300 hover:shadow-md hover:scale-105 cursor-pointer w-full;
+        @apply flex flex-col items-center justify-center p-4 rounded-xl bg-cardGray shadow-sm transition-all duration-300 hover:shadow-md hover:scale-105 cursor-pointer;
       }
       .icon-title {
         @apply text-xs mt-2 text-textDark truncate w-full text-center;
@@ -56,148 +46,80 @@
   </style>
 </head>
 
-<body class="bg-bgGray min-h-screen p-4">
-  <!-- 可滚动容器 -->
-  <div class="scroll-container">
-    <!-- 网址图标网格 -->
-    <main class="icon-grid">
-      <!-- 示例网址1 - 百度 -->
-      <a href="https://www.baidu.com" target="_blank" class="icon-card">
-        <div class="w-12 h-12 rounded-full bg-[#4285f4] flex items-center justify-center text-white">
-          <i class="fa fa-search text-xl"></i>
-        </div>
-        <span class="icon-title">百度</span>
-      </a>
-      
-      <!-- 示例网址2 - 谷歌 -->
-      <a href="https://www.google.com" target="_blank" class="icon-card">
-        <div class="w-12 h-12 rounded-full bg-[#ea4335] flex items-center justify-center text-white">
-          <i class="fa fa-google text-xl"></i>
-        </div>
-        <span class="icon-title">谷歌</span>
-      </a>
-      
-      <!-- 示例网址3 - 淘宝 -->
-      <a href="https://www.taobao.com" target="_blank" class="icon-card">
-        <div class="w-12 h-12 rounded-full bg-[#ff4400] flex items-center justify-center text-white">
-          <i class="fa fa-shopping-bag text-xl"></i>
-        </div>
-        <span class="icon-title">淘宝</span>
-      </a>
-      
-      <!-- 示例网址4 - 微信 -->
-      <a href="https://weixin.qq.com" target="_blank" class="icon-card">
-        <div class="w-12 h-12 rounded-full bg-[#7bb32e] flex items-center justify-center text-white">
-          <i class="fa fa-weixin text-xl"></i>
-        </div>
-        <span class="icon-title">微信</span>
-      </a>
-      
-      <!-- 示例网址5 - 抖音 -->
-      <a href="https://www.douyin.com" target="_blank" class="icon-card">
-        <div class="w-12 h-12 rounded-full bg-[#000000] flex items-center justify-center text-white">
-          <i class="fa fa-music text-xl"></i>
-        </div>
-        <span class="icon-title">抖音</span>
-      </a>
-      
-      <!-- 示例网址6 - 微博 -->
-      <a href="https://weibo.com" target="_blank" class="icon-card">
-        <div class="w-12 h-12 rounded-full bg-[#e6162d] flex items-center justify-center text-white">
-          <i class="fa fa-weibo text-xl"></i>
-        </div>
-        <span class="icon-title">微博</span>
-      </a>
-      
-      <!-- 示例网址7 - B站 -->
-      <a href="https://www.bilibili.com" target="_blank" class="icon-card">
-        <div class="w-12 h-12 rounded-full bg-[#fb7299] flex items-center justify-center text-white">
-          <i class="fa fa-play-circle text-xl"></i>
-        </div>
-        <span class="icon-title">B站</span>
-      </a>
-      
-      <!-- 示例网址8 - 知乎 -->
-      <a href="https://www.zhihu.com" target="_blank" class="icon-card">
-        <div class="w-12 h-12 rounded-full bg-[#0f88eb] flex items-center justify-center text-white">
-          <i class="fa fa-question-circle text-xl"></i>
-        </div>
-        <span class="icon-title">知乎</span>
-      </a>
-      
-      <!-- 示例网址9 - 网易云音乐 -->
-      <a href="https://music.163.com" target="_blank" class="icon-card">
-        <div class="w-12 h-12 rounded-full bg-[#c62f2f] flex items-center justify-center text-white">
-          <i class="fa fa-headphones text-xl"></i>
-        </div>
-        <span class="icon-title">网易云</span>
-      </a>
-      
-      <!-- 示例网址10 - 京东 -->
-      <a href="https://www.jd.com" target="_blank" class="icon-card">
-        <div class="w-12 h-12 rounded-full bg-[#e1251b] flex items-center justify-center text-white">
-          <i class="fa fa-shopping-cart text-xl"></i>
-        </div>
-        <span class="icon-title">京东</span>
-      </a>
-      
-      <!-- 示例网址11 - 优酷 -->
-      <a href="https://www.youku.com" target="_blank" class="icon-card">
-        <div class="w-12 h-12 rounded-full bg-[#2d5ac7] flex items-center justify-center text-white">
-          <i class="fa fa-television text-xl"></i>
-        </div>
-        <span class="icon-title">优酷</span>
-      </a>
-      
-      <!-- 示例网址12 - 腾讯视频 -->
-      <a href="https://v.qq.com" target="_blank" class="icon-card">
-        <div class="w-12 h-12 rounded-full bg-[#0066cc] flex items-center justify-center text-white">
-          <i class="fa fa-film text-xl"></i>
-        </div>
-        <span class="icon-title">腾讯视频</span>
-      </a>
-      
-      <!-- 示例网址13 - 爱奇艺 -->
-      <a href="https://www.iqiyi.com" target="_blank" class="icon-card">
-        <div class="w-12 h-12 rounded-full bg-[#165dff] flex items-center justify-center text-white">
-          <i class="fa fa-video-camera text-xl"></i>
-        </div>
-        <span class="icon-title">爱奇艺</span>
-      </a>
-      
-      <!-- 示例网址14 - 支付宝 -->
-      <a href="https://www.alipay.com" target="_blank" class="icon-card">
-        <div class="w-12 h-12 rounded-full bg-[#1677ff] flex items-center justify-center text-white">
-          <i class="fa fa-credit-card text-xl"></i>
-        </div>
-        <span class="icon-title">支付宝</span>
-      </a>
-      
-      <!-- 示例网址15 - 今日头条 -->
-      <a href="https://www.toutiao.com" target="_blank" class="icon-card">
-        <div class="w-12 h-12 rounded-full bg-[#ff8c00] flex items-center justify-center text-white">
-          <i class="fa fa-newspaper-o text-xl"></i>
-        </div>
-        <span class="icon-title">今日头条</span>
-      </a>
-    </main>
-  </div>
+<body class="bg-bgGray min-h-screen p-4 font-sans overflow-x-hidden"> <!-- 禁止横向滚动 -->
+  <!-- 网址图标网格 -->
+  <main class="icon-grid max-w-full"> <!-- 确保内容不超出屏幕宽度 -->
+    <!-- 示例网址1 - 百度 -->
+    <a href="https://www.baidu.com" target="_blank" class="icon-card">
+      <div class="w-12 h-12 rounded-full bg-[#4285f4] flex items-center justify-center text-white">
+        <i class="fa fa-search text-xl"></i>
+      </div>
+      <span class="icon-title">百度</span>
+    </a>
+    
+    <!-- 示例网址2 - 谷歌 -->
+    <a href="https://www.google.com" target="_blank" class="icon-card">
+      <div class="w-12 h-12 rounded-full bg-[#ea4335] flex items-center justify-center text-white">
+        <i class="fa fa-google text-xl"></i>
+      </div>
+      <span class="icon-title">谷歌</span>
+    </a>
+    
+    <!-- 示例网址3 - 淘宝 -->
+    <a href="https://www.taobao.com" target="_blank" class="icon-card">
+      <div class="w-12 h-12 rounded-full bg-[#ff4400] flex items-center justify-center text-white">
+        <i class="fa fa-shopping-bag text-xl"></i>
+      </div>
+      <span class="icon-title">淘宝</span>
+    </a>
+    
+    <!-- 示例网址4 - 微信 -->
+    <a href="https://weixin.qq.com" target="_blank" class="icon-card">
+      <div class="w-12 h-12 rounded-full bg-[#7bb32e] flex items-center justify-center text-white">
+        <i class="fa fa-weixin text-xl"></i>
+      </div>
+      <span class="icon-title">微信</span>
+    </a>
+    
+    <!-- 示例网址5 - 抖音 -->
+    <a href="https://www.douyin.com" target="_blank" class="icon-card">
+      <div class="w-12 h-12 rounded-full bg-[#000000] flex items-center justify-center text-white">
+        <i class="fa fa-music text-xl"></i>
+      </div>
+      <span class="icon-title">抖音</span>
+    </a>
+    
+    <!-- 示例网址6 - 微博 -->
+    <a href="https://weibo.com" target="_blank" class="icon-card">
+      <div class="w-12 h-12 rounded-full bg-[#e6162d] flex items-center justify-center text-white">
+        <i class="fa fa-weibo text-xl"></i>
+      </div>
+      <span class="icon-title">微博</span>
+    </a>
+    
+    <!-- 示例网址7 - B站 -->
+    <a href="https://www.bilibili.com" target="_blank" class="icon-card">
+      <div class="w-12 h-12 rounded-full bg-[#fb7299] flex items-center justify-center text-white">
+        <i class="fa fa-play-circle text-xl"></i>
+      </div>
+      <span class="icon-title">B站</span>
+    </a>
+  </main>
 
   <script>
     // 页面加载动画
     document.addEventListener('DOMContentLoaded', () => {
       const cards = document.querySelectorAll('.icon-card');
       cards.forEach((card, index) => {
-        // 初始状态
+        // 初始状态设置
         card.style.opacity = '0';
         card.style.transform = 'translateY(10px)';
         
-        // 渐入动画
         setTimeout(() => {
-          card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
           card.style.opacity = '1';
           card.style.transform = 'translateY(0)';
-        }, 80 * index);
+          card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        }, 100 * index);
       });
     });
   </script>
