@@ -33,32 +33,34 @@
       .icon-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr); /* 每行4个 */
-        gap: clamp(0.75rem, 3vw, 1.5rem); /* 自适应间距，最小0.75rem最大1.5rem */
+        gap: clamp(0.8rem, 3vw, 1.2rem); /* 优化间距范围 */
         width: 100%;
         box-sizing: border-box;
       }
       .icon-card {
-        @apply flex flex-col items-center justify-center p-3 sm:p-4 rounded-xl transition-all duration-300 hover:scale-105 cursor-pointer;
+        @apply flex flex-col items-center justify-center p-4 rounded-xl transition-all duration-300 hover:scale-105 cursor-pointer;
         box-sizing: border-box;
+        padding-top: 0.8rem;
+        padding-bottom: 0.8rem;
       }
       .icon-container {
-        @apply w-[clamp(2.5rem,8vw,3rem)] h-[clamp(2.5rem,8vw,3rem)] rounded-full bg-[#4285f4] flex items-center justify-center text-white;
+        /* 微调容器尺寸，适配更大图标 */
+        @apply w-[clamp(3.2rem,11vw,3.8rem)] h-[clamp(3.2rem,11vw,3.8rem)] rounded-full bg-[#4285f4] flex items-center justify-center text-white;
       }
       .icon-title {
-        @apply text-xs sm:text-sm mt-2 text-textDark truncate w-full text-center;
+        @apply text-sm mt-2.5 text-textDark truncate w-full text-center;
       }
     }
   </style>
 </head>
 
-<!-- 关键设置：竖向按需滚动，横向禁止滚动 -->
-<body class="bg-bgGray p-4 font-sans overflow-x-hidden m-0 min-h-screen">
+<body class="bg-bgGray p-4 font-sans overflow-x-hidden m-0">
   <!-- 网址图标网格 -->
   <main class="icon-grid max-w-full mx-auto">
     <!-- 示例网址1 - 百度 -->
     <a href="https://www.baidu.com" target="_blank" class="icon-card">
       <div class="icon-container">
-        <i class="fa fa-search text-xl"></i>
+        <i class="fa fa-search text-2xl font-black"></i> <!-- 更粗（font-black）更大（text-2xl） -->
       </div>
       <span class="icon-title">百度</span>
     </a>
@@ -66,7 +68,7 @@
     <!-- 示例网址2 - 谷歌 -->
     <a href="https://www.google.com" target="_blank" class="icon-card">
       <div class="icon-container">
-        <i class="fa fa-google text-xl"></i>
+        <i class="fa fa-google text-2xl font-black"></i>
       </div>
       <span class="icon-title">谷歌</span>
     </a>
@@ -74,7 +76,7 @@
     <!-- 示例网址3 - 淘宝 -->
     <a href="https://www.taobao.com" target="_blank" class="icon-card">
       <div class="icon-container">
-        <i class="fa fa-shopping-bag text-xl"></i>
+        <i class="fa fa-shopping-bag text-2xl font-black"></i>
       </div>
       <span class="icon-title">淘宝</span>
     </a>
@@ -82,7 +84,7 @@
     <!-- 示例网址4 - 微信 -->
     <a href="https://weixin.qq.com" target="_blank" class="icon-card">
       <div class="icon-container">
-        <i class="fa fa-weixin text-xl"></i>
+        <i class="fa fa-weixin text-2xl font-black"></i>
       </div>
       <span class="icon-title">微信</span>
     </a>
@@ -90,7 +92,7 @@
     <!-- 示例网址5 - 抖音 -->
     <a href="https://www.douyin.com" target="_blank" class="icon-card">
       <div class="icon-container">
-        <i class="fa fa-music text-xl"></i>
+        <i class="fa fa-music text-2xl font-black"></i>
       </div>
       <span class="icon-title">抖音</span>
     </a>
@@ -98,7 +100,7 @@
     <!-- 示例网址6 - 微博 -->
     <a href="https://weibo.com" target="_blank" class="icon-card">
       <div class="icon-container">
-        <i class="fa fa-weibo text-xl"></i>
+        <i class="fa fa-weibo text-2xl font-black"></i>
       </div>
       <span class="icon-title">微博</span>
     </a>
@@ -106,7 +108,7 @@
     <!-- 示例网址7 - B站 -->
     <a href="https://www.bilibili.com" target="_blank" class="icon-card">
       <div class="icon-container">
-        <i class="fa fa-play-circle text-xl"></i>
+        <i class="fa fa-play-circle text-2xl font-black"></i>
       </div>
       <span class="icon-title">B站</span>
     </a>
@@ -114,7 +116,7 @@
     <!-- 示例网址8 - 知乎 -->
     <a href="https://www.zhihu.com" target="_blank" class="icon-card">
       <div class="icon-container">
-        <i class="fa fa-question-circle text-xl"></i>
+        <i class="fa fa-question-circle text-2xl font-black"></i>
       </div>
       <span class="icon-title">知乎</span>
     </a>
@@ -122,7 +124,7 @@
     <!-- 示例网址9 - 网易云 -->
     <a href="https://music.163.com" target="_blank" class="icon-card">
       <div class="icon-container">
-        <i class="fa fa-headphones text-xl"></i>
+        <i class="fa fa-headphones text-2xl font-black"></i>
       </div>
       <span class="icon-title">网易云音乐</span>
     </a>
