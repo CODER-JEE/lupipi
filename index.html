@@ -13,8 +13,7 @@
       theme: {
         extend: {
           colors: {
-            bgGray: '#f0f0f0',
-            cardGray: '#ffffff',
+            bgGray: '#f0f0f0', // 240,240,240
             textDark: '#333333',
             accent: '#4f46e5'
           },
@@ -33,77 +32,99 @@
       }
       .icon-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem; /* 统一间距 */
+        grid-template-columns: repeat(4, 1fr); /* 每行4个 */
+        gap: clamp(0.75rem, 3vw, 1.5rem); /* 自适应间距，最小0.75rem最大1.5rem */
+        width: 100%;
+        box-sizing: border-box;
       }
       .icon-card {
-        @apply flex flex-col items-center justify-center p-4 rounded-xl bg-cardGray shadow-sm transition-all duration-300 hover:shadow-md hover:scale-105 cursor-pointer;
+        @apply flex flex-col items-center justify-center p-3 sm:p-4 rounded-xl transition-all duration-300 hover:scale-105 cursor-pointer;
+        box-sizing: border-box;
+      }
+      .icon-container {
+        @apply w-[clamp(2.5rem,8vw,3rem)] h-[clamp(2.5rem,8vw,3rem)] rounded-full bg-[#4285f4] flex items-center justify-center text-white;
       }
       .icon-title {
-        @apply text-xs mt-2 text-textDark truncate w-full text-center;
+        @apply text-xs sm:text-sm mt-2 text-textDark truncate w-full text-center;
       }
     }
   </style>
 </head>
 
-<!-- 关键修改：移除min-h-screen，避免强制页面高度超过屏幕；设置margin:0清除默认边距 -->
-<body class="bg-bgGray p-4 font-sans overflow-x-hidden m-0">
+<!-- 关键设置：竖向按需滚动，横向禁止滚动 -->
+<body class="bg-bgGray p-4 font-sans overflow-x-hidden m-0 min-h-screen">
   <!-- 网址图标网格 -->
-  <main class="icon-grid max-w-full">
+  <main class="icon-grid max-w-full mx-auto">
     <!-- 示例网址1 - 百度 -->
     <a href="https://www.baidu.com" target="_blank" class="icon-card">
-      <div class="w-12 h-12 rounded-full bg-[#4285f4] flex items-center justify-center text-white">
+      <div class="icon-container">
         <i class="fa fa-search text-xl"></i>
       </div>
       <span class="icon-title">百度</span>
     </a>
     
     <!-- 示例网址2 - 谷歌 -->
-    <a href="https://www.baidu.com" target="_blank" class="icon-card">
-      <div class="w-12 h-12 rounded-full bg-[#4285f4] flex items-center justify-center text-white">
-        <i class="fa fa-search text-xl"></i>
+    <a href="https://www.google.com" target="_blank" class="icon-card">
+      <div class="icon-container">
+        <i class="fa fa-google text-xl"></i>
       </div>
-      <span class="icon-title">百度</span>
+      <span class="icon-title">谷歌</span>
     </a>
     
     <!-- 示例网址3 - 淘宝 -->
-    <a href="https://www.baidu.com" target="_blank" class="icon-card">
-      <div class="w-12 h-12 rounded-full bg-[#4285f4] flex items-center justify-center text-white">
-        <i class="fa fa-search text-xl"></i>
+    <a href="https://www.taobao.com" target="_blank" class="icon-card">
+      <div class="icon-container">
+        <i class="fa fa-shopping-bag text-xl"></i>
       </div>
-      <span class="icon-title">百度</span>
+      <span class="icon-title">淘宝</span>
     </a>
     
     <!-- 示例网址4 - 微信 -->
-    <a href="https://www.baidu.com" target="_blank" class="icon-card">
-      <div class="w-12 h-12 rounded-full bg-[#4285f4] flex items-center justify-center text-white">
-        <i class="fa fa-search text-xl"></i>
+    <a href="https://weixin.qq.com" target="_blank" class="icon-card">
+      <div class="icon-container">
+        <i class="fa fa-weixin text-xl"></i>
       </div>
-      <span class="icon-title">百度</span>
+      <span class="icon-title">微信</span>
     </a>
     
     <!-- 示例网址5 - 抖音 -->
-    <a href="https://www.baidu.com" target="_blank" class="icon-card">
-      <div class="w-12 h-12 rounded-full bg-[#4285f4] flex items-center justify-center text-white">
-        <i class="fa fa-search text-xl"></i>
+    <a href="https://www.douyin.com" target="_blank" class="icon-card">
+      <div class="icon-container">
+        <i class="fa fa-music text-xl"></i>
       </div>
-      <span class="icon-title">百度</span>
+      <span class="icon-title">抖音</span>
     </a>
     
     <!-- 示例网址6 - 微博 -->
-    <a href="https://www.baidu.com" target="_blank" class="icon-card">
-      <div class="w-12 h-12 rounded-full bg-[#4285f4] flex items-center justify-center text-white">
-        <i class="fa fa-search text-xl"></i>
+    <a href="https://weibo.com" target="_blank" class="icon-card">
+      <div class="icon-container">
+        <i class="fa fa-weibo text-xl"></i>
       </div>
-      <span class="icon-title">百度</span>
+      <span class="icon-title">微博</span>
     </a>
     
     <!-- 示例网址7 - B站 -->
-    <a href="https://www.baidu.com" target="_blank" class="icon-card">
-      <div class="w-12 h-12 rounded-full bg-[#4285f4] flex items-center justify-center text-white">
-        <i class="fa fa-search text-xl"></i>
+    <a href="https://www.bilibili.com" target="_blank" class="icon-card">
+      <div class="icon-container">
+        <i class="fa fa-play-circle text-xl"></i>
       </div>
-      <span class="icon-title">百度</span>
+      <span class="icon-title">B站</span>
+    </a>
+    
+    <!-- 示例网址8 - 知乎 -->
+    <a href="https://www.zhihu.com" target="_blank" class="icon-card">
+      <div class="icon-container">
+        <i class="fa fa-question-circle text-xl"></i>
+      </div>
+      <span class="icon-title">知乎</span>
+    </a>
+    
+    <!-- 示例网址9 - 网易云 -->
+    <a href="https://music.163.com" target="_blank" class="icon-card">
+      <div class="icon-container">
+        <i class="fa fa-headphones text-xl"></i>
+      </div>
+      <span class="icon-title">网易云音乐</span>
     </a>
   </main>
 
