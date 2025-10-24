@@ -1,181 +1,254 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>HOME PAGE</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分类布局页面</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    html,
-    body {
-      height: 100%;
-      overflow-x: hidden;
-    }
+        body {
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            background-color: #f9f9f9;
+            overflow-x: hidden;
+            overflow-y: auto;
+            padding: 20px;
+        }
 
-    body {
-      background-color: white;
-      padding: 8px;
-    }
+        /* 分类容器样式 - 增加蓝色竖条 */
+        .category {
+            margin-bottom: 30px;
+            padding-left: 12px; /* 给蓝色竖条留出位置 */
+        }
 
-    .container {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 1px;
-      width: 100%;
-    }
+        /* 分类标题带蓝色竖条 */
+        .category-title {
+            position: relative;
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 16px;
+            padding-left: 14px; /* 文字与竖条的距离 */
+            font-weight: 600;
+        }
 
-    .item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      background-color: transparent;
-      padding: 10px 5px;
-      /* 点击动效基础样式 */
-      transition: transform 0.2s ease;
-      touch-action: manipulation;
-      /* 优化移动端触摸体验 */
-    }
+        .category-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 2px;
+            bottom: 2px;
+            width: 4px;
+            background-color: #4285f4; /* 蓝色竖条 */
+            border-radius: 2px;
+        }
 
-    /* 移动端点击放大缩小效果 */
-    .item:active {
-      transform: scale(0.95);
-      /* 点击时缩小到95% */
-    }
+        /* 项目容器 */
+        .item-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px; /* item之间的统一间距 */
+        }
 
-    .item:hover {
-      transform: scale(1.05);
-      /* hover时放大到105%（可选增强体验） */
-    }
+        /* 单个项目 - 固定尺寸确保统一 */
+        .item {
+            flex: 0 0 120px; /* 固定宽度120px，不伸缩 */
+            height: 100px; /* 固定高度，确保所有item尺寸一致 */
+            background-color: white;
+            border-radius: 8px;
+            padding: 16px 8px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
 
-    .icon-container {
-      width: 40px;
-      height: 40px;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
+        .item-icon {
+            font-size: 28px;
+            color: #4285f4;
+            margin-bottom: 8px;
+        }
 
-    /* 图片适配样式 */
-    .icon-img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      /* 保持图片比例，适应容器 */
-    }
-
-    .text {
-      font-weight: bold;
-      font-size: 15px;
-      text-align: center;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 100%;
-      color: black;
-    }
-  </style>
+        .item-name {
+            font-size: 14px;
+            color: #555;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
 </head>
-
 <body>
-  <div class="container">
+    <!-- 办公工具分类（增加项目展示换行） -->
+    <div class="category">
+        <h3 class="category-title">办公工具</h3>
+        <div class="item-wrapper">
+            <div class="item">
+                <span class="item-icon">📝</span>
+                <span class="item-name">文档编辑</span>
+            </div>
+            <div class="item">
+                <span class="item-icon">📊</span>
+                <span class="item-name">表格工具</span>
+            </div>
+            <div class="item">
+                <span class="item-icon">🎨</span>
+                <span class="item-name">图片处理</span>
+            </div>
+            <div class="item">
+                <span class="item-icon">📋</span>
+                <span class="item-name">待办清单</span>
+            </div>
+            <div class="item">
+                <span class="item-icon">📎</span>
+                <span class="item-name">文件传输</span>
+            </div>
+            <div class="item">
+                <span class="item-icon">📅</span>
+                <span class="item-name">日程安排</span>
+            </div>
+            <div class="item">
+                <span class="item-icon">✍️</span>
+                <span class="item-name">思维导图</span>
+            </div>
+            <div class="item">
+                <span class="item-icon">📁</span>
+                <span class="item-name">云存储</span>
+            </div>
+            <div class="item">
+                <span class="item-icon">🔄</span>
+                <span class="item-name">版本控制</span>
+            </div>
+        </div>
+    </div>
 
-    <!-- Samsung -->
-    <a href="https://www.samsung.com.cn/" class="item" target="_blank">
-      <div class="icon-container">
-        <img src="" alt="Samsung图标" class="icon-img">
-      </div>
-      <span class="text">Samsung</span>
-    </a>
+    <!-- 社交平台分类（增加项目展示换行） -->
+    <div class="category">
+        <h3 class="category-title">社交平台</h3>
+        <div class="item-wrapper">
+            <div class="item">
+                <span class="item-icon">💬</span>
+                <span class="item-name">即时通讯</span>
+            </div>
+            <div class="item">
+                <span class="item-icon">📱</span>
+                <span class="item-name">社交网络</span>
+            </div>
+            <div class="item">
+                <span class="item-icon">👥</span>
+                <span class="item-name">社群论坛</span>
+            </div>
+            <div class="item">
+                <span class="item-icon">📢</span>
+                <span class="item-name">信息发布</span>
+            </div>
+            <div class="item">
+                <span class="item-icon">🎤</span>
+                <span class="item-name">语音聊天</span>
+            </div>
+            <div class="item">
+                <span class="item-icon">📹</span>
+                <span class="item-name">视频会议</span>
+            </div>
+            <div class="item">
+                <span class="item-icon">👫</span>
+                <span class="item-name">陌生人社交</span>
+            </div>
+            <div class="item">
+                <span class="item-icon">🏢</span>
+                <span class="item-name">职场社交</span>
+            </div>
+        </div>
+    </div>
 
-    <!-- Apple -->
-    <a href="https://www.apple.com.cn" class="item" target="_blank">
-      <div class="icon-container">
-        <img src="" alt="Apple图标" class="icon-img">
-      </div>
-      <span class="text">Apple</span>
-    </a>
+    <!-- 娱乐休闲分类（增加项目展示换行） -->
+    <div class="category">
+        <h3 class="category-title">娱乐休闲</h3>
+        <div class="item-wrapper">
+            <div class="item">
+                <span class="item-icon">🎮</span>
+                <span class="item-name">游戏中心</span>
+            </div>
+            <div class="item">
+                <span class="item-icon">🎵</span>
+                <span class="item-name">音乐播放</span>
+            </div>
+            <div class="item">
+                <span class="item-icon">🎬</span>
+                <span class="item-name">视频观看</span>
+            </div>
+            <div class="item">
+                <span class="item-icon">📖</span>
+                <span class="item-name">电子阅读</span>
+            </div>
+            <div class="item">
+                <span class="item-icon">📷</span>
+                <span class="item-name">拍照摄影</span>
+            </div>
+            <div class="item">
+                <span class="item-icon">🎭</span>
+                <span class="item-name">直播平台</span>
+            </div>
+            <div class="item">
+                <span class="item-icon">🎲</span>
+                <span class="item-name">棋牌游戏</span>
+            </div>
+            <div class="item">
+                <span class="item-icon">🎨</span>
+                <span class="item-name">绘画创作</span>
+            </div>
+            <div class="item">
+                <span class="item-icon">🧩</span>
+                <span class="item-name">益智游戏</span>
+            </div>
+            <div class="item">
+                <span class="item-icon">🎪</span>
+                <span class="item-name">虚拟乐园</span>
+            </div>
+            <div class="item">
+                <span class="item-icon">📝</span>
+                <span class="item-name">小说创作</span>
+            </div>
+        </div>
+    </div>
 
-    <!-- 百度 -->
-    <a href="https://www.baidu.com/" class="item" target="_blank">
-      <div class="icon-container">
-        <img src="" alt="百度图标" class="icon-img">
-      </div>
-      <span class="text">百度</span>
-    </a>
-
-    <!-- Google -->
-    <a href="https://www.google.com/" class="item" target="_blank">
-      <div class="icon-container">
-        <img src="" alt="Google图标" class="icon-img">
-      </div>
-      <span class="text">Google</span>
-    </a>
-
-    <!-- 少数派 -->
-    <a href="https://sspai.com/" class="item" target="_blank">
-      <div class="icon-container">
-        <img src="" alt="少数派图标" class="icon-img">
-      </div>
-      <span class="text">少数派</span>
-    </a>
-
-    <!-- 掘金 -->
-    <a href="https://juejin.cn/" class="item" target="_blank">
-      <div class="icon-container">
-        <img src="" alt="掘金图标" class="icon-img">
-      </div>
-      <span class="text">掘金</span>
-    </a>
-
-    <!-- VPN -->
-    <a href="https://web3vpn.net/" class="item" target="_blank">
-      <div class="icon-container">
-        <img src="" alt="VPN图标" class="icon-img">
-      </div>
-      <span class="text">VPN</span>
-    </a>
-
-  </div>
-
-  <script>
-    function adjustLayout() {
-      const container = document.querySelector('.container');
-      const viewportHeight = window.innerHeight;
-      const bodyPadding = 16;
-
-      const containerHeight = container.offsetHeight;
-      const totalContentHeight = containerHeight + bodyPadding;
-
-      document.body.style.overflowY = totalContentHeight > viewportHeight ? 'auto' : 'hidden';
-
-      const containerWidth = container.offsetWidth;
-      const viewportWidth = window.innerWidth;
-
-      if (containerWidth > viewportWidth) {
-        const items = document.querySelectorAll('.item');
-        items.forEach(item => {
-          const currentPadding = parseInt(getComputedStyle(item).padding);
-          if (currentPadding > 2) {
-            item.style.padding = (currentPadding - 1) + 'px';
-          }
-        });
-        adjustLayout();
-      }
-    }
-
-    window.addEventListener('load', adjustLayout);
-    window.addEventListener('resize', adjustLayout);
-  </script>
+    <!-- 生活服务分类（新增分类展示更多内容） -->
+    <div class="category">
+        <h3 class="category-title">生活服务</h3>
+        <div class="item-wrapper">
+            <div class="item">
+                <span class="item-icon">🛒</span>
+                <span class="item-name">在线购物</span>
+            </div>
+            <div class="item">
+                <span class="item-icon">🍽️</span>
+                <span class="item-name">外卖点餐</span>
+            </div>
+            <div class="item">
+                <span class="item-icon">🚗</span>
+                <span class="item-name">打车出行</span>
+            </div>
+            <div class="item">
+                <span class="item-icon">🏠</span>
+                <span class="item-name">租房买房</span>
+            </div>
+            <div class="item">
+                <span class="item-icon">💊</span>
+                <span class="item-name">在线医疗</span>
+            </div>
+            <div class="item">
+                <span class="item-icon">🧹</span>
+                <span class="item-name">家政服务</span>
+            </div>
+            <div class="item">
+                <span class="item-icon">✈️</span>
+                <span class="item-name">旅游预订</span>
+            </div>
+        </div>
+    </div>
 </body>
-
 </html>
